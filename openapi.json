@@ -11,8 +11,8 @@
       "get": {
         "summary": "",
         "deprecated": false,
-        "description": "",
-        "operationId": "",
+        "description": "This endpoint returns all wines from the datastore",
+        "operationId": "readAllWines",
         "tags": [],
         "responses": {},
         "parameters": [],
