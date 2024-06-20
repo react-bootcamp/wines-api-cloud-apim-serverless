@@ -248,11 +248,13 @@
             "properties": {
               "name": {
                 "description": "Name of the appelation",
-                "type": "string"
+                "type": "string",
+                "examples": ["Lalande-de-Pomerol"]
               },
               "regions": {
                 "description": "Region of the appelation",
-                "type": "string"
+                "type": "string",
+                "examples": ["Bordeaux"]
               }
             }
           },
