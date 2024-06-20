@@ -1,0 +1,15 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Wines API",
+    "version": "1.0.0",
+    "description": "# Wines API\n\nThis API powers the https://github.com/react-bootcamp reboot for 2024"
+  },
+  "tags": [],
+  "paths": {},
+  "components": {
+    "schemas": {},
+    "x-cloud-apim-plugins": {},
+    "x-cloud-apim-backends": {}
+  }
+}
