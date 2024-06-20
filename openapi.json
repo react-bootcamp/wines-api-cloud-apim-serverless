@@ -6,10 +6,50 @@
     "description": "# Wines API\n\nThis API powers the https://github.com/react-bootcamp reboot for 2024"
   },
   "tags": [],
-  "paths": {},
+  "paths": {
+    "/api/wines": {
+      "get": {
+        "summary": "",
+        "deprecated": false,
+        "description": "",
+        "operationId": "",
+        "tags": [],
+        "responses": {},
+        "parameters": [],
+        "requestBody": null,
+        "x-cloud-apim-plugins": {
+          "$ref": "#/components/x-cloud-apim-plugins/defaultPlugins"
+        },
+        "x-cloud-apim-backend": {
+          "$ref": "#/components/x-cloud-apim-backends/defaultBackend"
+        }
+      }
+    }
+  },
   "components": {
     "schemas": {},
-    "x-cloud-apim-plugins": {},
-    "x-cloud-apim-backends": {}
+    "x-cloud-apim-plugins": {
+      "defaultPlugins": [
+        {
+          "plugin": "cp:otoroshi.next.plugins.OverrideHost",
+          "enabled": true,
+          "config": {}
+        }
+      ]
+    },
+    "x-cloud-apim-backends": {
+      "defaultBackend": {
+        "root": "/",
+        "rewrite": false,
+        "targets": [
+          {
+            "hostname": "app-4fc9cf4d-9c01-43ec-b766-531b417ad183.cleverapps.io",
+            "port": 443,
+            "tls": true
+          }
+        ]
+      }
+    },
+    "x-cloud-apim-frontends": {}
   }
 }
