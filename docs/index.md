@@ -2,12 +2,14 @@
 
 This API powers the https://github.dev/react-bootcamp reboot for 2024. 
 
-This API is open to everyone and is available one ${environment.HOST}
+This API is open to everyone and is available one https://${environment.HOST}
+
+## Fetch all wine regions
 
 If you want to try the API, you can retrieve all wines regions just like that:
 
 ```sh
-curl -X GET ${environment.HOST}/api/regions | jq
+curl -X GET https://${environment.HOST}/api/regions | jq
 
 [
   "Bordeaux",
@@ -19,10 +21,12 @@ curl -X GET ${environment.HOST}/api/regions | jq
 ]
 ```
 
+## Fetch wines from a region
+
 then you can get all the wines from a specific region like :
 
 ```sh
-curl -X GET ${environment.HOST}/api/wines?region=Bordeaux | jq
+curl -X GET https://${environment.HOST}/api/wines?region=Bordeaux | jq
 
 [
   {
