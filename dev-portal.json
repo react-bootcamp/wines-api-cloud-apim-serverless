@@ -4,7 +4,7 @@
   "title": "Wines API",
   "examples": true,
   "path": "/docs",
-  "icon": "https://www.cloud-apim.com/assets/logo/made-with-cloud-apim-inverted.png",
+  "icon": "https://github.com/react-bootcamp/react-workshop/raw/master/step-2-done/public/img/chevrol-bel-air.png",
   "max_user_created_apikeys": 0,
   "plans": []
 }
