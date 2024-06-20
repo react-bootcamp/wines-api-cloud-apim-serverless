@@ -5,16 +5,6 @@
   "examples": true,
   "path": "/docs",
   "icon": "https://www.cloud-apim.com/assets/logo/made-with-cloud-apim-inverted.png",
-  "max_user_created_apikeys": 1,
-  "plans": [
-    {
-      "id": "default",
-      "name": "Free plan",
-      "default": true,
-      "description": "The default free plan",
-      "throttling": 100,
-      "daily": "10000",
-      "monthly": "10000"
-    }
-  ]
+  "max_user_created_apikeys": 0,
+  "plans": []
 }
