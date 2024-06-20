@@ -160,11 +160,11 @@
             "items": {
               "type": "string"
             },
-            "examples": [
+            "examples": [[
               "Cabernet Sauvignon",
               "Merlot",
               "Cabernet Franc"
-            ]
+            ]]
           },
           "name": {
             "description": "Name of the wine",
