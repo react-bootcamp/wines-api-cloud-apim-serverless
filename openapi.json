@@ -321,7 +321,7 @@
         "rewrite": false,
         "targets": [
           {
-            "hostname": "app-4fc9cf4d-9c01-43ec-b766-531b417ad183.cleverapps.io",
+            "hostname": "${environment.API_TARGET_HOSTNAME}",
             "port": 443,
             "tls": true
           }
