@@ -13,9 +13,110 @@
         "deprecated": false,
         "description": "This endpoint returns all wines from the datastore",
         "operationId": "readAllWines",
-        "tags": [],
-        "responses": {},
-        "parameters": [],
+        "tags": ["wines"],
+        "responses": {
+          "200": {
+            "description": "List of wines",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Wine"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Generic error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "region",
+            "in": "query",
+            "description": "The region of the wine",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "Bordeaux"
+          }
+        ],
+        "requestBody": null,
+        "x-cloud-apim-plugins": {
+          "$ref": "#/components/x-cloud-apim-plugins/defaultPlugins"
+        },
+        "x-cloud-apim-backend": {
+          "$ref": "#/components/x-cloud-apim-backends/defaultBackend"
+        }
+      }
+    },
+    "/api/wines/{id}": {
+      "get": {
+        "summary": "",
+        "deprecated": false,
+        "description": "This endpoint returns one wine",
+        "operationId": "readWineById",
+        "tags": ["wines"],
+        "responses": {
+          "200": {
+            "description": "A wine",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Wine"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Wine not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Generic error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id of the wine",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "chevrol-bel-air"
+          }
+        ],
         "requestBody": null,
         "x-cloud-apim-plugins": {
           "$ref": "#/components/x-cloud-apim-plugins/defaultPlugins"
@@ -27,7 +128,80 @@
     }
   },
   "components": {
-    "schemas": {},
+    "schemas": {
+      "Wine": {
+        "description": "Object representing a Wine",
+        "required": [
+          "id",
+          "name",
+          "type",
+          "appellation",
+          "grapes"
+        ],
+        "type": "object",
+        "properties": {
+          "appelation": {
+            "description": "Appelation of the wine",
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "Name of the appelation",
+                "type": "string"
+              },
+              "regions": {
+                "description": "Region of the appelation",
+                "type": "string"
+              }
+            }
+          },
+          "grapes": {
+            "description": "Grapes used in this wine",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "examples": [
+              "Cabernet Sauvignon",
+              "Merlot",
+              "Cabernet Franc"
+            ]
+          },
+          "name": {
+            "description": "Name of the wine",
+            "type": "string",
+            "examples": ["Château Chevrol Bel Air"]
+          },
+          "type": {
+            "description": "Type of the wine",
+            "type": "string",
+            "examples": ["Rouge", "Blanc"]
+          },
+          "id": {
+            "description": "id of the wine",
+            "type": "string",
+            "readOnly": true,
+            "examples": ["chevrol-bel-air"]
+          }
+        }
+      },
+      "Error": {
+        "description": "Object representing an error",
+        "type": "object",
+        "properties": {
+          "code": {
+            "format": "int32",
+            "description": "Error code that identify of the error",
+            "type": "integer",
+            "examples": ["1000"]
+          },
+          "message": {
+            "description": "Short description of the error",
+            "type": "string",
+            "examples": ["Could not perform the task"]
+          }
+        }
+      }
+    },
     "x-cloud-apim-plugins": {
       "defaultPlugins": [
         {
