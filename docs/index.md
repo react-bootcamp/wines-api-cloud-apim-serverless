@@ -2,7 +2,7 @@
 
 This API powers the https://github.dev/react-bootcamp reboot for 2024. 
 
-This API is open to everyone and is available one https://${environment.HOST}
+This API is open to everyone and is available on [https://${environment.HOST}/api](https://${environment.HOST}/api)
 
 ## Fetch all wine regions
 
