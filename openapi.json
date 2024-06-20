@@ -7,6 +7,82 @@
   },
   "tags": [],
   "paths": {
+    "/api/likes": {
+      "get": {
+        "summary": "",
+        "deprecated": false,
+        "description": "This endpoint returns all wine likes from the datastore",
+        "operationId": "readAllWinesLikes",
+        "tags": ["likes"],
+        "responses": {
+          "200": {
+            "description": "Count of likes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LikesCount"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Generic error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": null,
+        "x-cloud-apim-plugins": {
+          "$ref": "#/components/x-cloud-apim-plugins/defaultPlugins"
+        },
+        "x-cloud-apim-backend": {
+          "$ref": "#/components/x-cloud-apim-backends/defaultBackend"
+        }
+      }
+    },
+    "/api/comments": {
+      "get": {
+        "summary": "",
+        "deprecated": false,
+        "description": "This endpoint returns all wine comments from the datastore",
+        "operationId": "readAllWinesComments",
+        "tags": ["comments"],
+        "responses": {
+          "200": {
+            "description": "Count of comments",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommentsCount"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Generic error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": null,
+        "x-cloud-apim-plugins": {
+          "$ref": "#/components/x-cloud-apim-plugins/defaultPlugins"
+        },
+        "x-cloud-apim-backend": {
+          "$ref": "#/components/x-cloud-apim-backends/defaultBackend"
+        }
+      }
+    },
     "/api/regions": {
       "get": {
         "summary": "",
@@ -227,6 +303,72 @@
           "$ref": "#/components/x-cloud-apim-backends/defaultBackend"
         }
       }
+    },
+    "/api/wines/{id}/comments": {
+      "get": {
+        "summary": "",
+        "deprecated": false,
+        "description": "This endpoint returns the comments for one wine",
+        "operationId": "getWineCommentsById",
+        "tags": ["wines"],
+        "responses": {
+          "200": {
+            "description": "An array of comments",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Comment"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Wine not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Error"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Generic error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id of the wine",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "chevrol-bel-air"
+          }
+        ],
+        "requestBody": null,
+        "x-cloud-apim-plugins": {
+          "$ref": "#/components/x-cloud-apim-plugins/defaultPlugins"
+        },
+        "x-cloud-apim-backend": {
+          "$ref": "#/components/x-cloud-apim-backends/defaultBackend"
+        }
+      }
     }
   },
   "components": {
@@ -285,6 +427,56 @@
             "type": "string",
             "readOnly": true,
             "examples": ["chevrol-bel-air"]
+          }
+        }
+      },
+      "Comment": {
+        "description": "Object representing a comment",
+        "required": [
+          "date",
+          "title",
+          "content"
+        ],
+        "type": "object",
+        "properties": {
+          "date": {
+            "description": "Date of the comment",
+            "type": "string",
+            "examples": ["2024-06-14T13:47:43.059Z"]
+          },
+          "title": {
+            "description": "title of the comment",
+            "type": "string",
+            "examples": ["Great wine from Bordeaux!"]
+          },
+          "content": {
+            "description": "content of the comment",
+            "type": "string",
+            "examples": ["The 2009 vintage was perfect! Great moment with awesome friends!"]
+          }
+        }
+      },
+      "LikesCount": {
+        "description": "Object representing total count of likes",
+        "type": "object",
+        "properties": {
+          "count": {
+            "format": "int32",
+            "description": "Number of likes in the datastore",
+            "type": "integer",
+            "examples": [1000]
+          }
+        }
+      },
+      "CommentsCount": {
+        "description": "Object representing total count of comments",
+        "type": "object",
+        "properties": {
+          "count": {
+            "format": "int32",
+            "description": "Number of comments in the datastore",
+            "type": "integer",
+            "examples": [1000]
           }
         }
       },
