@@ -13,7 +13,9 @@
         "deprecated": false,
         "description": "This endpoint returns all wine likes from the datastore",
         "operationId": "readAllWinesLikes",
-        "tags": ["likes"],
+        "tags": [
+          "likes"
+        ],
         "responses": {
           "200": {
             "description": "Count of likes",
@@ -51,7 +53,9 @@
         "deprecated": false,
         "description": "This endpoint returns all wine comments from the datastore",
         "operationId": "readAllWinesComments",
-        "tags": ["comments"],
+        "tags": [
+          "comments"
+        ],
         "responses": {
           "200": {
             "description": "Count of comments",
@@ -89,7 +93,9 @@
         "deprecated": false,
         "description": "This endpoint returns all wine regions from the datastore",
         "operationId": "readAllWinesRegions",
-        "tags": ["regions"],
+        "tags": [
+          "regions"
+        ],
         "responses": {
           "200": {
             "description": "List of regions",
@@ -130,7 +136,9 @@
         "deprecated": false,
         "description": "This endpoint returns all wines from the datastore",
         "operationId": "readAllWines",
-        "tags": ["wines"],
+        "tags": [
+          "wines"
+        ],
         "responses": {
           "200": {
             "description": "List of wines",
@@ -183,7 +191,9 @@
         "deprecated": false,
         "description": "This endpoint returns one wine",
         "operationId": "readWineById",
-        "tags": ["wines"],
+        "tags": [
+          "wines"
+        ],
         "responses": {
           "200": {
             "description": "A wine",
@@ -249,7 +259,9 @@
         "deprecated": false,
         "description": "This endpoint returns the image for one wine",
         "operationId": "getWineImageById",
-        "tags": ["wines"],
+        "tags": [
+          "wines"
+        ],
         "responses": {
           "200": {
             "description": "A wine image",
@@ -310,7 +322,9 @@
         "deprecated": false,
         "description": "This endpoint returns the comments for one wine",
         "operationId": "getWineCommentsById",
-        "tags": ["wines"],
+        "tags": [
+          "wines"
+        ],
         "responses": {
           "200": {
             "description": "An array of comments",
@@ -391,12 +405,16 @@
               "name": {
                 "description": "Name of the appelation",
                 "type": "string",
-                "examples": ["Lalande-de-Pomerol"]
+                "examples": [
+                  "Lalande-de-Pomerol"
+                ]
               },
               "regions": {
                 "description": "Region of the appelation",
                 "type": "string",
-                "examples": ["Bordeaux"]
+                "examples": [
+                  "Bordeaux"
+                ]
               }
             }
           },
@@ -406,27 +424,36 @@
             "items": {
               "type": "string"
             },
-            "examples": [[
-              "Cabernet Sauvignon",
-              "Merlot",
-              "Cabernet Franc"
-            ]]
+            "examples": [
+              [
+                "Cabernet Sauvignon",
+                "Merlot",
+                "Cabernet Franc"
+              ]
+            ]
           },
           "name": {
             "description": "Name of the wine",
             "type": "string",
-            "examples": ["Château Chevrol Bel Air"]
+            "examples": [
+              "Château Chevrol Bel Air"
+            ]
           },
           "type": {
             "description": "Type of the wine",
             "type": "string",
-            "examples": ["Rouge", "Blanc"]
+            "examples": [
+              "Rouge",
+              "Blanc"
+            ]
           },
           "id": {
             "description": "id of the wine",
             "type": "string",
             "readOnly": true,
-            "examples": ["chevrol-bel-air"]
+            "examples": [
+              "chevrol-bel-air"
+            ]
           }
         }
       },
@@ -442,17 +469,23 @@
           "date": {
             "description": "Date of the comment",
             "type": "string",
-            "examples": ["2024-06-14T13:47:43.059Z"]
+            "examples": [
+              "2024-06-14T13:47:43.059Z"
+            ]
           },
           "title": {
             "description": "title of the comment",
             "type": "string",
-            "examples": ["Great wine from Bordeaux!"]
+            "examples": [
+              "Great wine from Bordeaux!"
+            ]
           },
           "content": {
             "description": "content of the comment",
             "type": "string",
-            "examples": ["The 2009 vintage was perfect! Great moment with awesome friends!"]
+            "examples": [
+              "The 2009 vintage was perfect! Great moment with awesome friends!"
+            ]
           }
         }
       },
@@ -464,7 +497,9 @@
             "format": "int32",
             "description": "Number of likes in the datastore",
             "type": "integer",
-            "examples": [1000]
+            "examples": [
+              1000
+            ]
           }
         }
       },
@@ -476,7 +511,9 @@
             "format": "int32",
             "description": "Number of comments in the datastore",
             "type": "integer",
-            "examples": [1000]
+            "examples": [
+              1000
+            ]
           }
         }
       },
@@ -488,12 +525,16 @@
             "format": "int32",
             "description": "Error code that identify of the error",
             "type": "integer",
-            "examples": ["1000"]
+            "examples": [
+              "1000"
+            ]
           },
           "message": {
             "description": "Short description of the error",
             "type": "string",
-            "examples": ["Could not perform the task"]
+            "examples": [
+              "Could not perform the task"
+            ]
           }
         }
       }
@@ -504,6 +545,42 @@
           "plugin": "cp:otoroshi.next.plugins.OverrideHost",
           "enabled": true,
           "config": {}
+        },
+        {
+          "plugin": "cp:otoroshi.next.plugins.NgDeferPlugin",
+          "enabled": true,
+          "include": [],
+          "exclude": [],
+          "config": {
+            "duration": 800
+          }
+        },
+        {
+          "plugin": "cp:otoroshi.next.plugins.NgCustomThrottling",
+          "enabled": true,
+          "include": [],
+          "exclude": [],
+          "config": {
+            "per_route": true,
+            "global": false,
+            "group": null,
+            "expression": "${req.ip}",
+            "throttling_quota": 10
+          }
+        },
+        {
+          "plugin": "cp:otoroshi.next.plugins.NgCustomQuotas",
+          "enabled": true,
+          "include": [],
+          "exclude": [],
+          "config": {
+            "per_route": true,
+            "global": false,
+            "group": null,
+            "expression": "${req.ip}",
+            "daily_quota": 10000,
+            "monthly_quota": 10000
+          }
         }
       ]
     },

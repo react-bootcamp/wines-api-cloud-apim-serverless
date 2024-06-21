@@ -3,7 +3,12 @@
     {
       "type": "doc",
       "id": "index",
-      "label": "Index"
+      "label": "Home"
+    },
+    {
+      "type": "doc",
+      "id": "latency",
+      "label": "API Latency"
     },
     {
       "type": "api-ref",
