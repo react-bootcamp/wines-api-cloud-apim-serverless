@@ -6,3 +6,7 @@ We are using the [Otoroshi Defer Responses plugin](https://maif.github.io/otoros
 to introduce artifical latency in order to demonstrate how [react-query](https://tanstack.com/query/latest/docs/framework/react/overview) works
 
 By default, the latency is setup to 800 ms.
+
+<div style="width: 100%; display: flex; justify-content: center; align-items: center;">
+  <img src="/docs/defer.png" alt="The defer responses plugin" width="900" height="auto" class="centered-img">
+</div>
