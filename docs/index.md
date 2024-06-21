@@ -61,21 +61,18 @@ then you can get all the wines from a specific region like :
 ```sh
 curl -X GET https://${environment.HOST}/api/wines/chevrol-bel-air | jq
 
-[
-  {
-    "id": "chevrol-bel-air",
-    "name": "Château Chevrol Bel Air",
-    "type": "Rouge",
-    "appellation": {
-      "name": "Lalande-de-Pomerol",
-      "region": "Bordeaux"
-    },
-    "grapes": [
-      "Cabernet Sauvignon",
-      "Merlot",
-      "Cabernet Franc"
-    ]
+{
+  "id": "chevrol-bel-air",
+  "name": "Château Chevrol Bel Air",
+  "type": "Rouge",
+  "appellation": {
+    "name": "Lalande-de-Pomerol",
+    "region": "Bordeaux"
   },
-  ...
-]
+  "grapes": [
+    "Cabernet Sauvignon",
+    "Merlot",
+    "Cabernet Franc"
+  ]
+}
 ```
