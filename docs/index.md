@@ -4,7 +4,8 @@ This API powers the https://github.dev/react-bootcamp reboot for 2024.
 
 This API is used to manage a toy wines app. You can use it to retrieve wine regions, wines by regions, comments and likes on individual wines. 
 
-![The wine app](/docs/winesapp.png)
+<img src="/docs/winesapp.png" alt="The wine app" width="300" height="auto">
+
 
 This API is open to everyone and is available on [https://${environment.HOST}/api](https://${environment.HOST}/api)
 
