@@ -554,6 +554,33 @@
           "config": {
             "duration": 800
           }
+        },
+        {
+          "plugin": "cp:otoroshi.next.plugins.NgCustomThrottling",
+          "enabled": true,
+          "include": [],
+          "exclude": [],
+          "config": {
+            "per_route": true,
+            "global": false,
+            "group": null,
+            "expression": "${req.ip}",
+            "throttling_quota": 10
+          }
+        },
+        {
+          "plugin": "cp:otoroshi.next.plugins.NgCustomQuotas",
+          "enabled": true,
+          "include": [],
+          "exclude": [],
+          "config": {
+            "per_route": true,
+            "global": false,
+            "group": null,
+            "expression": "${req.ip}",
+            "daily_quota": 10000,
+            "monthly_quota": 10000
+          }
         }
       ]
     },
