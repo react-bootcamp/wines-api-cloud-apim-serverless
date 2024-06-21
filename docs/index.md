@@ -50,6 +50,19 @@ curl -X GET https://${environment.HOST}/api/wines?region=Bordeaux | jq
       "Cabernet Franc"
     ]
   },
+  {
+    "id": "les-hauts-de-tour-prignac",
+    "name": "Les Hauts de Tour Prignac",
+    "type": "Rouge",
+    "appellation": {
+      "name": "Médoc",
+      "region": "Bordeaux"
+    },
+    "grapes": [
+      "Cabernet Sauvignon",
+      "Merlot"
+    ]
+  },
   ...
 ]
 ```
